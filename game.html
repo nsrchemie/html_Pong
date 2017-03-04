@@ -22,18 +22,24 @@ window.onload = function() {
 	,1000/fps);
 }
 
-function drawcomponents(l,t,w,h,color) {
+function drawrectangles(l,t,w,h,color) {
 	canvasContext.fillStyle = color;
 	canvasContext.fillRect(l,t,w,h);
 }
 
+function drawcircle(x,y,r,color) {
+	canvasContext.fillStyle = color;
+	canvasContext.beginPath();
+	canvasContext.arc(x,y,r,0,Math.PI*2, true);
+	canvasContext.fill();
+}
 
 function drawcanvas(){
-	drawcomponents(0,0,canvas.width,canvas.height,'black');
+	drawrectangles(0,0,canvas.width,canvas.height,'black');
 }
 function drawball() {
 	ball+=speed;
-	drawcomponents(ball,100,10,10,'red');
+	drawcircle(ball,10,10,'white');
 	if (ball > canvas.width) {
 		speed = -speed;
 	}
@@ -43,8 +49,8 @@ function drawball() {
 }
 
 function drawpaddles(){
-	drawcomponents(0,210,10,100,'white');
-	drawcomponents(790,210,10,100,'white');
+	drawrectangles(0,210,10,100,'white');
+	drawrectangles(790,210,10,100,'white');
 }
 </script>
 </html>
