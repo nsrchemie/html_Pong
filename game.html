@@ -17,7 +17,11 @@ window.onload = function() {
 	canvasContext.fillStyle = 'red';
 	canvasContext.fillRect(ball,100,10,10);
 
-	setInterval(ball+=20,50);
+	setInterval(
+		(function(){
+			ball+=20;
+			canvasContext.fillRect(ball,100,10,10);
+			}),50);
 }
 </script>
 </html>
