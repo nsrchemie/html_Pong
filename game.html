@@ -12,16 +12,15 @@ window.onload = function() {
 	console.log("This is pong!");
 	canvas = document.getElementById('pongCanvas');
 	canvasContext = canvas.getContext('2d');
-	canvasContext.fillStyle = 'black';	
-	canvasContext.fillRect(0,0,canvas.width,canvas.height);
-	canvasContext.fillStyle = 'red';
-	canvasContext.fillRect(ball,100,10,10);
 
 	setInterval(
 		(function(){
 			ball+=20;
+			canvasContext.fillStyle = 'black';	
+			canvasContext.fillRect(0,0,canvas.width,canvas.height);
+			canvasContext.fillStyle = 'red';
 			canvasContext.fillRect(ball,100,10,10);
-			}),50);
+;}),50);
 }
 </script>
 </html>
