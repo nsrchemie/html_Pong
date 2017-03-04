@@ -22,28 +22,29 @@ window.onload = function() {
 	,1000/fps);
 }
 
+function drawcomponents(l,t,w,h,color) {
+	canvasContext.fillStyle = color;
+	canvasContext.fillRect(l,t,w,h);
+}
+
 
 function drawcanvas(){
-	canvasContext.fillStyle = 'black';	
-	canvasContext.fillRect(0,0,canvas.width,canvas.height);}
-
+	drawcomponents(0,0,canvas.width,canvas.height,'black');
+}
 function drawball() {
 	ball+=speed;
-	canvasContext.fillStyle = 'red';
-	canvasContext.fillRect(ball,100,10,10);
-	if (ball == 790) {
+	drawcomponents(ball,100,10,10,'red');
+	if (ball > canvas.width) {
 		speed = -speed;
 	}
-	else if (ball == 10) {
-		speed = Math.abs(speed);
+	else if (ball < 0) {
+		speed = -speed;
 	}
-
 }
-function drawpaddles() {
-	canvasContext.fillStyle = 'white';
-	canvasContext.fillRect(0,210,10,100);
-	canvasContext.fillStyle = 'white';
-	canvasContext.fillRect(790,210,10,100);
+
+function drawpaddles(){
+	drawcomponents(0,210,10,100,'white');
+	drawcomponents(790,210,10,100,'white');
 }
 </script>
 </html>
