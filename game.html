@@ -9,18 +9,26 @@ var canvas;
 var canvasContext;
 var ball = 50;
 window.onload = function() {
-	console.log("This is pong!");
+
 	canvas = document.getElementById('pongCanvas');
 	canvasContext = canvas.getContext('2d');
+	var fps = 30;
+	setInterval(function(){
+		drawcanvas();
+		drawball();
+	}
+	,1000/fps);
+}
 
-	setInterval(
-		(function(){
-			ball+=20;
-			canvasContext.fillStyle = 'black';	
-			canvasContext.fillRect(0,0,canvas.width,canvas.height);
-			canvasContext.fillStyle = 'red';
-			canvasContext.fillRect(ball,100,10,10);
-;}),50);
+
+function drawcanvas(){
+	canvasContext.fillStyle = 'black';	
+	canvasContext.fillRect(0,0,canvas.width,canvas.height);}
+
+function drawball() {
+	ball+=20;
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect(ball,100,10,10);
 }
 </script>
 </html>
