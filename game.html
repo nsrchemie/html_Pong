@@ -8,6 +8,7 @@
 var canvas;
 var canvasContext;
 var ball = 50;
+var speed = 5;
 window.onload = function() {
 
 	canvas = document.getElementById('pongCanvas');
@@ -27,9 +28,16 @@ function drawcanvas(){
 	canvasContext.fillRect(0,0,canvas.width,canvas.height);}
 
 function drawball() {
-	ball+=20;
+	ball+=speed;
 	canvasContext.fillStyle = 'red';
 	canvasContext.fillRect(ball,100,10,10);
+	if (ball == 785) {
+		speed = -5;
+	}
+	if (ball == 10) {
+		speed = 5;
+	}
+
 }
 function drawpaddles() {
 	canvasContext.fillStyle = 'white';
