@@ -31,11 +31,11 @@ function drawball() {
 	ball+=speed;
 	canvasContext.fillStyle = 'red';
 	canvasContext.fillRect(ball,100,10,10);
-	if (ball == 785) {
-		speed = -5;
+	if (ball == 790) {
+		speed = -speed;
 	}
-	if (ball == 10) {
-		speed = 5;
+	else if (ball == 10) {
+		speed = Math.abs(speed);
 	}
 
 }
