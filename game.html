@@ -1,0 +1,19 @@
+<html>
+ <body>
+  <h1>This will be the pong game</h1>
+   <canvas id="pongCanvas" height="600" width="800"></canvas>
+</body>
+
+<script>
+var canvas;
+var canContext;
+
+window.onload = function() {
+	console.log("This is pong!");
+	canvas = document.getElementById("pongCanvas");
+	canvasContext = canvas.getContext("2d");
+	canvasContext.fillstyle = "black";
+	canvasContext.fillRect(0,0,canvas.width,canvas.height);
+}
+</script>
+</html>
