@@ -16,6 +16,7 @@ window.onload = function() {
 	setInterval(function(){
 		drawcanvas();
 		drawball();
+		drawpaddles();
 	}
 	,1000/fps);
 }
@@ -29,6 +30,12 @@ function drawball() {
 	ball+=20;
 	canvasContext.fillStyle = 'red';
 	canvasContext.fillRect(ball,100,10,10);
+}
+function drawpaddles() {
+	canvasContext.fillStyle = 'white';
+	canvasContext.fillRect(0,210,10,100);
+	canvasContext.fillStyle = 'white';
+	canvasContext.fillRect(790,210,10,100);
 }
 </script>
 </html>
