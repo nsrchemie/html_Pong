@@ -7,7 +7,7 @@
 <script>
 var canvas;
 var canvasContext;
-
+var ball = 50;
 window.onload = function() {
 	console.log("This is pong!");
 	canvas = document.getElementById('pongCanvas');
@@ -15,7 +15,9 @@ window.onload = function() {
 	canvasContext.fillStyle = 'black';	
 	canvasContext.fillRect(0,0,canvas.width,canvas.height);
 	canvasContext.fillStyle = 'red';
-	canvasContext.fillRect(200,200,60,60);
+	canvasContext.fillRect(ball,100,10,10);
+
+	setInterval(ball+=20,50);
 }
 </script>
 </html>
