@@ -6,14 +6,16 @@
 
 <script>
 var canvas;
-var canContext;
+var canvasContext;
 
 window.onload = function() {
 	console.log("This is pong!");
-	canvas = document.getElementById("pongCanvas");
-	canvasContext = canvas.getContext("2d");
-	canvasContext.fillstyle = "black";
+	canvas = document.getElementById('pongCanvas');
+	canvasContext = canvas.getContext('2d');
+	canvasContext.fillStyle = 'black';	
 	canvasContext.fillRect(0,0,canvas.width,canvas.height);
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect(200,200,60,60);
 }
 </script>
 </html>
