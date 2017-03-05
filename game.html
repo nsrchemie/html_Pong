@@ -43,6 +43,11 @@ window.onload = function() {
 	});
 }
 
+function ballreset() {
+	ballx = canvas.width/2;
+	bally = canvas.height/2;
+}
+
 function drawrectangles(l,t,w,h,color) {
 	canvasContext.fillStyle = color;
 	canvasContext.fillRect(l,t,w,h);
@@ -66,7 +71,8 @@ function drawball() {
 		speedx = -speedx;
 	}
 	if (ballx < 0) {
-		speedx = -speedx;
+		//speedx = -speedx;
+		ballreset();
 	}
 	if (bally > canvas.height) {
 		speedy = -speedy;
