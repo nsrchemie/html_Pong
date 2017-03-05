@@ -11,17 +11,36 @@ var ballx = 50;
 var bally = 50;
 var speedx = 10;
 var speedy = 4;
-window.onload = function() {
+var paddle1Y = 250;
+const PADDLE_HEIGHT = 100;
 
+function calculateMousePos(evt) {
+	var rect = canvas.getBoundingClientRect();
+	var root = document.documentElement;
+	var mousex = evt.clientX - rect.left - root.scrollLeft;
+	var mousey = evt.clientY - rect.top - root.scrollTop;
+	return {
+		x:mousex,
+		y:mousey
+	};
+}
+
+window.onload = function() {
 	canvas = document.getElementById('pongCanvas');
 	canvasContext = canvas.getContext('2d');
+
 	var fps = 30;
 	setInterval(function(){
 		drawcanvas();
 		drawball();
 		drawpaddles();
-	}
-	,1000/fps);
+	},1000/fps);
+
+	canvas.addEventListener('mousemove',
+		function(evt) {
+			var mousePos = calculateMousePos(evt);
+			paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
+	});
 }
 
 function drawrectangles(l,t,w,h,color) {
@@ -58,7 +77,7 @@ function drawball() {
 }
 
 function drawpaddles(){
-	drawrectangles(0,210,10,100,'white');
+	drawrectangles(0,paddle1Y,10,PADDLE_HEIGHT,'white');
 	drawrectangles(790,210,10,100,'white');
 }
 </script>
