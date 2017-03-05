@@ -41,7 +41,7 @@ window.onload = function() {
 	canvas.addEventListener('mousemove',
 		function(evt) {
 			var mousePos = calculateMousePos(evt);
-			paddle2Y = mousePos.y - (PADDLE_HEIGHT/2);
+			paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
 	});
 }
 
@@ -66,7 +66,17 @@ function drawcircle(x,y,r,color) {
 function drawcanvas(){
 	drawrectangles(0,0,canvas.width,canvas.height,'black');
 }
+
+function aimovement() {
+	var paddle2ycenter = paddle2Y + (PADDLE_HEIGHT/2);
+	if (paddle2Y < bally-35) {
+		paddle2Y += 6;}
+	else if (paddle2ycenter > bally+35) {
+		paddle2Y -= 6;}
+
+}
 function drawball() {
+	aimovement();
 	ballx+=speedx;
 	bally+=speedy;
 	drawcircle(ballx,bally,10,'white');
