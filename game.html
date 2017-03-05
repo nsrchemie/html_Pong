@@ -71,8 +71,12 @@ function drawball() {
 		speedx = -speedx;
 	}
 	if (ballx < 0) {
-		//speedx = -speedx;
+		if(bally > paddle1Y && 
+		bally < paddle1Y+PADDLE_HEIGHT) {
+			speedx = -speedx; }
+		else {
 		ballreset();
+		speedx = -speedx; }
 	}
 	if (bally > canvas.height) {
 		speedy = -speedy;
