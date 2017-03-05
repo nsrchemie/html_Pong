@@ -7,8 +7,10 @@
 <script>
 var canvas;
 var canvasContext;
-var ball = 50;
-var speed = 5;
+var ballx = 50;
+var bally = 50;
+var speedx = 10;
+var speedy = 4;
 window.onload = function() {
 
 	canvas = document.getElementById('pongCanvas');
@@ -38,13 +40,20 @@ function drawcanvas(){
 	drawrectangles(0,0,canvas.width,canvas.height,'black');
 }
 function drawball() {
-	ball+=speed;
-	drawcircle(ball,10,10,'white');
-	if (ball > canvas.width) {
-		speed = -speed;
+	ballx+=speedx;
+	bally+=speedy;
+	drawcircle(ballx,bally,10,'white');
+	if (ballx > canvas.width) {
+		speedx = -speedx;
 	}
-	else if (ball < 0) {
-		speed = -speed;
+	if (ballx < 0) {
+		speedx = -speedx;
+	}
+	if (bally > canvas.height) {
+		speedy = -speedy;
+	}
+	if (bally < 0) {
+		speedy = -speedy;
 	}
 }
 
