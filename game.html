@@ -12,7 +12,9 @@ var bally = 50;
 var speedx = 10;
 var speedy = 4;
 var paddle1Y = 250;
+var paddle2Y = 250;
 const PADDLE_HEIGHT = 100;
+const PADDLE_THICKNESS = 10;
 
 function calculateMousePos(evt) {
 	var rect = canvas.getBoundingClientRect();
@@ -39,13 +41,14 @@ window.onload = function() {
 	canvas.addEventListener('mousemove',
 		function(evt) {
 			var mousePos = calculateMousePos(evt);
-			paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
+			paddle2Y = mousePos.y - (PADDLE_HEIGHT/2);
 	});
 }
 
 function ballreset() {
 	ballx = canvas.width/2;
 	bally = canvas.height/2;
+	speedx = -speedx;
 }
 
 function drawrectangles(l,t,w,h,color) {
@@ -67,16 +70,20 @@ function drawball() {
 	ballx+=speedx;
 	bally+=speedy;
 	drawcircle(ballx,bally,10,'white');
+
 	if (ballx > canvas.width) {
-		speedx = -speedx;
+		if(bally > paddle2Y && 
+			bally < paddle2Y+PADDLE_HEIGHT) {
+			speedx = -speedx; }
+		else {
+			ballreset(); }
 	}
 	if (ballx < 0) {
 		if(bally > paddle1Y && 
 		bally < paddle1Y+PADDLE_HEIGHT) {
 			speedx = -speedx; }
 		else {
-		ballreset();
-		speedx = -speedx; }
+		ballreset();}
 	}
 	if (bally > canvas.height) {
 		speedy = -speedy;
@@ -87,8 +94,8 @@ function drawball() {
 }
 
 function drawpaddles(){
-	drawrectangles(0,paddle1Y,10,PADDLE_HEIGHT,'white');
-	drawrectangles(790,210,10,100,'white');
+	drawrectangles(0,paddle1Y,PADDLE_THICKNESS,PADDLE_HEIGHT,'white');
+	drawrectangles(canvas.width - PADDLE_THICKNESS,paddle2Y,PADDLE_THICKNESS,PADDLE_HEIGHT,'white');
 }
 </script>
 </html>
